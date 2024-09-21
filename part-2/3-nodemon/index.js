@@ -1,5 +1,5 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
 const port = 3000;
@@ -12,19 +12,18 @@ const EntrySchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
 });
 
-const Entry = mongoose.model('Entry', EntrySchema);
+const Entry = mongoose.model("Entry", EntrySchema);
 
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   try {
-    const entry = new Entry({ text: 'This is an entry' });
+    const entry = new Entry({ text: "This is an entry" });
     await entry.save();
-    res.send('Entry added!');
+    res.send("Entry added!");
   } catch (err) {
-    res.status(500).send('Error occurred');
+    res.status(500).send("Error occurred");
   }
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
